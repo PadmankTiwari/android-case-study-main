@@ -9,8 +9,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -46,6 +50,7 @@ class MainActivity : ComponentActivity() {
                         itemViewModel.fetchData()
                     }
                     val isLoading by itemViewModel.isLoading.observeAsState(false)
+                    val errorMessage by itemViewModel.errorMessage.observeAsState()
                     Box(modifier = Modifier.fillMaxSize()) {
                         NavHost(
                             modifier = Modifier.padding(innerPadding),
@@ -105,6 +110,11 @@ class MainActivity : ComponentActivity() {
                                     color = Themes.colors.primary
                                 )
                             }
+                        }
+
+                        if (errorMessage != null) {
+                            // ADD A ERROR DIALOG
+                            // add VM testcase
                         }
                     }
                 }

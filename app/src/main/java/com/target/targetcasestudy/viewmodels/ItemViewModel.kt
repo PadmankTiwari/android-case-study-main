@@ -31,6 +31,9 @@ private val dealsRepository: DealsRepository
     private val _isLoading = MutableLiveData<Boolean>(false)
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _errorMessage = MutableLiveData<String?>(null)
+    val errorMessage: LiveData<String?> = _errorMessage
+
     fun fetchData() {
         if (_dealsResponse.value == null) {
             viewModelScope.launch {
@@ -38,8 +41,9 @@ private val dealsRepository: DealsRepository
                 try {
                     val response = dealsRepository.retrieveDeals()
                     _dealsResponse.value = response
+                    _errorMessage.value = null
                 } catch (e: Exception) {
-                    e.printStackTrace()
+                    _errorMessage.value = "Failed to fetch deals. Please try again."
                 } finally {
                     _isLoading.value = false
                 }
@@ -54,8 +58,9 @@ private val dealsRepository: DealsRepository
                 try {
                     val response = dealsRepository.retrieveItemDetails(id)
                     _itemDetailsResponse.value = response
+                    _errorMessage.value = null
                 } catch (e: Exception) {
-                    e.printStackTrace()
+                    _errorMessage.value = "Failed to fetch deal details. Please try again."
                 } finally {
                     _isLoading.value = false
                 }
