@@ -5,5 +5,6 @@ data class DealItem(
   var title: String,
   var description: String,
   var price: String,
-  var aisle: String
+  var aisle: String,
+  var imageUrl: String? = null,
 )
