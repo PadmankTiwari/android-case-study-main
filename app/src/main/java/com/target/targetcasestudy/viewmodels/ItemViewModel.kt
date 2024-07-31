@@ -28,24 +28,37 @@ private val dealsRepository: DealsRepository
     private val _itemDetailsResponse = MutableLiveData<Deal?>(null)
     val itemDetailsResponse: LiveData<Deal?> = _itemDetailsResponse
 
+    private val _isLoading = MutableLiveData<Boolean>(false)
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun fetchData() {
-        viewModelScope.launch {
-            try {
-                val response = dealsRepository.retrieveDeals()
-                _dealsResponse.value = response
-            } catch (e: Exception) {
-                e.printStackTrace()
+        if (_dealsResponse.value == null) {
+            viewModelScope.launch {
+                _isLoading.value = true
+                try {
+                    val response = dealsRepository.retrieveDeals()
+                    _dealsResponse.value = response
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                } finally {
+                    _isLoading.value = false
+                }
             }
         }
     }
 
     fun fetchItem(id: String) {
-        viewModelScope.launch {
-            try {
-                val response = dealsRepository.retrieveItemDetails(id)
-                _itemDetailsResponse.value = response
-            } catch (e: Exception) {
-                e.printStackTrace()
+        if (_itemDetailsResponse.value == null || _itemDetailsResponse.value?.id != id) {
+            viewModelScope.launch {
+                _isLoading.value = true
+                try {
+                    val response = dealsRepository.retrieveItemDetails(id)
+                    _itemDetailsResponse.value = response
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                } finally {
+                    _isLoading.value = false
+                }
             }
         }
     }

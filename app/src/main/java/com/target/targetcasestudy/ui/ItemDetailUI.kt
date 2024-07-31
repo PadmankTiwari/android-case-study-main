@@ -66,7 +66,7 @@ fun ItemDetailsUI(
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.Start,
         ) {
-            Column(modifier = Modifier.background(Themes.colors.background).padding(16.dp)) {
+            Column(modifier = Modifier.fillMaxWidth().background(Themes.colors.background).padding(16.dp)) {
                 GlideImage(
                     model = detailsData?.imageUrl,
                     contentDescription = "",
