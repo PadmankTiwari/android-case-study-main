@@ -3,18 +3,11 @@ package com.target.targetcasestudy.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
 import com.target.targetcasestudy.api.Deal
 import com.target.targetcasestudy.api.DealResponse
 import com.target.targetcasestudy.api.DealsRepository
-import com.target.targetcasestudy.data.DealItem
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -33,6 +26,14 @@ private val dealsRepository: DealsRepository
 
     private val _errorMessage = MutableLiveData<String?>(null)
     val errorMessage: LiveData<String?> = _errorMessage
+
+    private val _retryAction = MutableLiveData<(() -> Unit)?>(null)
+    val retryAction: LiveData<(() -> Unit)?> = _retryAction
+
+    fun dismissError() {
+        _errorMessage.value = null
+        _retryAction.value = null
+    }
 
     fun fetchData() {
         if (_dealsResponse.value == null) {

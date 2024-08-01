@@ -9,12 +9,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -27,6 +23,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.target.targetcasestudy.theme.AppTheme
 import com.target.targetcasestudy.theme.Themes
+import com.target.targetcasestudy.ui.ErrorModal
 import com.target.targetcasestudy.ui.GalleryScreen
 import com.target.targetcasestudy.ui.ItemDetailsUI
 import com.target.targetcasestudy.utils.Screen
@@ -51,6 +48,7 @@ class MainActivity : ComponentActivity() {
                     }
                     val isLoading by itemViewModel.isLoading.observeAsState(false)
                     val errorMessage by itemViewModel.errorMessage.observeAsState()
+                    val retryAction by itemViewModel.retryAction.observeAsState()
                     Box(modifier = Modifier.fillMaxSize()) {
                         NavHost(
                             modifier = Modifier.padding(innerPadding),
@@ -113,8 +111,15 @@ class MainActivity : ComponentActivity() {
                         }
 
                         if (errorMessage != null) {
-                            // ADD A ERROR DIALOG
-                            // add VM testcase
+                            ErrorModal(
+                                errorMessage = errorMessage,
+                                onRetry = {
+                                     retryAction?.invoke()
+                                },
+                                onDismiss = {
+                                    itemViewModel.dismissError()
+                                }
+                            )
                         }
                     }
                 }
