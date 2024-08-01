@@ -34,5 +34,5 @@ or as little of the existing code as you'd like. Larger changes such as leveragi
 are also on the table if you believe that's the best way to showcase your talents!
 
 #### ScreenShots 
-![Landing Screen](/docs/screenshot1.png)
-![Details Screen](/docs/screenshot2.png)
+![Landing Screen](https://github.com/PadmankTiwari/android-case-study-main/blob/master/doc/screenshot1.png)
+![Details Screen](https://github.com/PadmankTiwari/android-case-study-main/blob/master/doc/screenshot2.png)
