@@ -33,6 +33,6 @@ to grab the real deals to display in the app.  Your solution should make use of 
 or as little of the existing code as you'd like. Larger changes such as leveraging Jetpack Compose 
 are also on the table if you believe that's the best way to showcase your talents!
 
-#### ScreenShots 
+#### Screen Shots 
 ![Landing Screen](https://github.com/PadmankTiwari/android-case-study-main/blob/master/doc/screenshot1.png)
 ![Details Screen](https://github.com/PadmankTiwari/android-case-study-main/blob/master/doc/screenshot2.png)
