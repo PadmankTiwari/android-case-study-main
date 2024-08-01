@@ -33,3 +33,6 @@ to grab the real deals to display in the app.  Your solution should make use of 
 or as little of the existing code as you'd like. Larger changes such as leveraging Jetpack Compose 
 are also on the table if you believe that's the best way to showcase your talents!
 
+#### ScreenShots 
+![Description of Image](docs/screenshots/screenshot1.png)
+![Description of Image](docs/screenshots/screenshot2.png)

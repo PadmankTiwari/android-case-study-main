@@ -88,7 +88,7 @@ class MainActivity : ComponentActivity() {
                                     addToCartClick = {
                                         Toast.makeText(
                                             this@MainActivity,
-                                            "Item Added to cart",
+                                            getString(R.string.item_added_to_cart),
                                             Toast.LENGTH_LONG
                                         ).show()
                                     }

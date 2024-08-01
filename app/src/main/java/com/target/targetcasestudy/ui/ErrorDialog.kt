@@ -6,6 +6,8 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.target.targetcasestudy.R
 import com.target.targetcasestudy.theme.Themes
 
 @Composable
@@ -19,7 +21,7 @@ fun ErrorModal(
             containerColor = Themes.colors.background,
             onDismissRequest = onDismiss,
             title = {
-                Text(text = "Something Went Wrong!",
+                Text(text = stringResource(R.string.something_went_wrong),
                     color = Themes.colors.primaryText)
             },
             text = {
@@ -31,13 +33,14 @@ fun ErrorModal(
                     onRetry()
                     onDismiss()
                 }, colors = ButtonDefaults.buttonColors(containerColor = Themes.colors.primary)) {
-                    Text("Retry",
+                    Text(
+                        stringResource(R.string.retry),
                         color = Themes.colors.buttonText)
                 }
             },
             dismissButton = {
                 OutlinedButton(onClick = onDismiss, colors = ButtonDefaults.buttonColors(containerColor = Themes.colors.buttonText)) {
-                    Text("Cancel", color = Themes.colors.primary)
+                    Text(stringResource(R.string.cancel), color = Themes.colors.primary)
                 }
             }
         )

@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -82,7 +83,11 @@ fun ImageListItem(name: Deal, imageUrl: String, onClick: () -> Unit) {
                     )
                 }
                 Spacer(modifier = Modifier.height(8.dp))
-                name.aisle?.let { AvailabilityRow(inStock = name.availability.equals("In stock"), aisleNumber = it) }
+                name.aisle?.let { AvailabilityRow(inStock = name.availability.equals(
+                    stringResource(
+                        R.string.in_stock
+                    )
+                ), aisleNumber = it) }
             }
         }
     }
@@ -115,7 +120,7 @@ fun PriceRow(
 
         // Regular Price
         Text(
-            text = "reg. $regularPrice",
+            text = stringResource(R.string.reg, regularPrice.toString()),
             style = MaterialTheme.typography.bodySmall.copy(
                 fontSize = 14.sp
             ),
@@ -135,7 +140,7 @@ fun AvailabilityRow(
         verticalAlignment = Alignment.Bottom
     ) {
         Text(
-            text = if (inStock) "In stock" else "Out of stock",
+            text = if (inStock) stringResource(id = R.string.in_stock) else stringResource(R.string.out_of_stock),
             style = MaterialTheme.typography.bodySmall.copy(
                 fontSize = 14.sp
             ),
@@ -144,7 +149,7 @@ fun AvailabilityRow(
         )
         if(inStock) {
             Text(
-                text = " in aisle ${aisleNumber.uppercase()}",
+                text = stringResource(R.string.in_aisle, aisleNumber.uppercase()),
                 style = MaterialTheme.typography.bodySmall.copy(
                     textDecoration = TextDecoration.None,
                     fontSize = 14.sp

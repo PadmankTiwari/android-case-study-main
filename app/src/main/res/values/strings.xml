@@ -1,6 +1,16 @@
 <resources>
-  <string name="app_name">TargetCaseStudy</string>
+    <string name="app_name">TargetCaseStudy</string>
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="something_went_wrong">Something Went Wrong!</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Retry</string>
+    <string name="product_details">Product Details</string>
+    <string name="details">Details</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="list">List</string>
+    <string name="in_stock">In stock</string>
+    <string name="reg">reg. %s</string>
+    <string name="out_of_stock">Out of stock</string>
+    <string name="in_aisle">" in aisle %1$s"</string>
+    <string name="item_added_to_cart">Item Added to cart</string>
 </resources>

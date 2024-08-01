@@ -31,12 +31,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.target.targetcasestudy.R
 import com.target.targetcasestudy.api.Deal
 import com.target.targetcasestudy.theme.Themes
 
@@ -66,7 +68,10 @@ fun ItemDetailsUI(
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.Start,
         ) {
-            Column(modifier = Modifier.fillMaxWidth().background(Themes.colors.background).padding(16.dp)) {
+            Column(modifier = Modifier
+                .fillMaxWidth()
+                .background(Themes.colors.background)
+                .padding(16.dp)) {
                 GlideImage(
                     model = detailsData?.imageUrl,
                     contentDescription = "",
@@ -99,10 +104,12 @@ fun ItemDetailsUI(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Column(modifier = Modifier.background(Themes.colors.background).padding(16.dp)) {
+            Column(modifier = Modifier
+                .background(Themes.colors.background)
+                .padding(16.dp)) {
 
                 Text(
-                    text = "Product Details",
+                    text = stringResource(R.string.product_details),
                     style = MaterialTheme.typography.bodyMedium.copy(
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp
@@ -132,7 +139,7 @@ private fun DetailsTopBar(
         TopAppBar(
             title = {
                 Text(
-                    text = "Details",
+                    text = stringResource(R.string.details),
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp
@@ -178,7 +185,7 @@ private fun DetailsBottomBar(
                 enabled = true
             ) {
                 Text(
-                    text = "Add to cart",
+                    text = stringResource(R.string.add_to_cart),
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp

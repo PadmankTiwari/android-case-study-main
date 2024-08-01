@@ -8,7 +8,7 @@ sealed class Screen(
     val route: String,
     val navArguments: List<NamedNavArgument> = emptyList()
 ) {
-    object ItemListScreen : Screen("List")
+    object ItemListScreen : Screen("list")
 
     object ItemDetailScreen : Screen(
         route = "deals/{id}",

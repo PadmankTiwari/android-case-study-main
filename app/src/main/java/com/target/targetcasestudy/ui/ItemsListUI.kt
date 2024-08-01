@@ -17,8 +17,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.target.targetcasestudy.R
 import com.target.targetcasestudy.api.Deal
 import com.target.targetcasestudy.theme.Themes
 
@@ -83,7 +85,7 @@ private fun TopBar(
         TopAppBar(
             title = {
                 Text(
-                    text = "List",
+                    text = stringResource(R.string.list),
                     style = MaterialTheme.typography.titleLarge.copy(
                         fontWeight = FontWeight.Bold
                     ),
